@@ -2718,7 +2718,7 @@ function collectBlocks() {
   document.querySelectorAll('#p-lez section[data-screen-label]').forEach(function (sec) { pWalk(sec, blocchi); });
   if (printScope === 'app') {
     blocchi.push({ t: 'h1', html: 'Approfondimenti' });
-    document.querySelectorAll('#p-app article').forEach(function (art) { pWalk(art, blocchi); });
+    document.querySelectorAll('#p-app article, #p-app section[data-screen-label]').forEach(function (art) { pWalk(art, blocchi); });
   }
   return blocchi;
 }
