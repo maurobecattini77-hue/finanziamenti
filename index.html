@@ -145,7 +145,7 @@ svg text.num, svg tspan.num{font-family:'Fraunces',Georgia,serif !important;font
 .fotomedia{max-width:620px;margin:26px auto;}
 .fotogrande{max-width:840px;margin:26px auto;}
 .fotoblocco img,.fotonuda img{cursor:zoom-in;}
-#velofoto{position:fixed;inset:0;background:rgba(38,36,32,.93);display:none;align-items:center;justify-content:center;z-index:1200;padding:34px;}
+#velofoto{position:fixed;inset:0;background:#262420;display:none;align-items:center;justify-content:center;z-index:1200;padding:34px;}
 #velofoto.on{display:flex;}
 #velofoto img{max-width:min(1720px,95vw);max-height:91vh;width:auto;height:auto;border-radius:10px;}
 #velofoto .chiudi{position:absolute;top:16px;right:20px;width:48px;height:48px;border-radius:50%;border:none;background:rgba(248,248,243,.16);color:#F8F8F3;font-size:30px;line-height:1;cursor:pointer;font-family:'Schibsted Grotesk',sans-serif;}
@@ -168,7 +168,7 @@ svg.mappa{max-width:1020px;margin-left:auto;margin-right:auto;}
   justify-content:center;cursor:zoom-in;padding:0;z-index:2;}
 .zoomabile>.lente:hover{background:#EEF0EA;border-color:#C9C4B8;}
 .zoomabile>.lente svg{width:19px;height:19px;display:block;}
-#velografica{position:fixed;inset:0;background:rgba(38,36,32,.93);display:none;align-items:center;
+#velografica{position:fixed;inset:0;background:#262420;display:none;align-items:center;
   justify-content:center;z-index:1200;padding:34px 26px;}
 #velografica.on{display:flex;}
 #velografica .telaio{background:#F8F8F3;border:1px solid #D9DACF;border-radius:16px;
@@ -216,6 +216,160 @@ svg.mappa{max-width:1020px;margin-left:auto;margin-right:auto;}
 @media (max-width: 520px){
   #p-lez [style*="repeat(3,1fr)"], #p-app [style*="repeat(3,1fr)"],
   #p-lez [style*="repeat(4,1fr)"], #p-app [style*="repeat(4,1fr)"]{ grid-template-columns:1fr !important; }
+}
+</style>
+
+<style>
+/* ===================================================================== */
+/*  IMPIANTO NUOVO 25/07/2026                                          */
+/*  Carattere 21 e colonna del testo 880 centrata. La card NON cambia    */
+/*  larghezza: si stringe solo il testo. Il trucco e' il padding largo,  */
+/*  e chi deve restare larga esce col margine negativo.                  */
+/* ===================================================================== */
+:root{ --corpo:21px; --sfora:78px; }          /* (1036 - 880) / 2 = 78 */
+
+@media (min-width:901px){
+  .card{ padding-left:122px !important; padding-right:122px !important; }   /* 44 + 78 */
+  /* tutto quello che deve tornare larga come prima */
+  .card > svg, .card > .binario, .card > .zoomabile:not(.filo),
+  .card > .gf-tempo-scorri, .card > .gf-archi, .card > .gf-scala,
+  .card > .gf-scala-eti, .card > .gf-confronto, .card > table,
+  .card > .sfonda, .dida.sfonda{
+    margin-left:calc(-1 * var(--sfora)); margin-right:calc(-1 * var(--sfora));
+  }
+  .dida.sfonda{ max-width:1036px; }
+}
+/* ⚠ svg.mappa NON prende i margini negativi: perderebbe la centratura
+   (sta dentro .binario, che sfonda per conto suo). */
+
+.card p.t{ font-size:var(--corpo); }
+.boxlist li{ font-size:18px; }
+.shelfc p{ font-size:17.5px; }
+blockquote.def p.q{ font-size:24px; }
+@media (max-width:900px){ :root{ --corpo:19px; } }
+@media (max-width:700px){ :root{ --corpo:18px; } }
+
+/* ---------- LE FOTO: le tre larghezze ---------- */
+.filo{ max-width:880px; margin-left:auto; margin-right:auto; }
+.sfonda{ max-width:1036px; margin-left:auto; margin-right:auto; }
+.fotoriga{ max-width:880px; margin-left:auto; margin-right:auto; }
+
+/* ---------- LA LENTE NUOVA ---------- */
+.zoomabile{ position:relative; }
+.zoomabile > .lente{
+  position:absolute; top:10px; right:10px; width:44px; height:44px; border-radius:50%;
+  border:1px solid #D9DACF; background:rgba(255,255,255,.94); color:#57534a;
+  display:flex; align-items:center; justify-content:center; cursor:zoom-in; padding:0; z-index:3;
+  transition:opacity .16s ease, transform .16s ease;
+}
+.zoomabile > .lente svg{ width:22px; height:22px; display:block; }
+.zoomabile > .lente:hover{ background:#fff; border-color:#C9C4B8; transform:scale(1.06); }
+/* col mouse: compare solo quando ci passi sopra */
+@media (hover:hover) and (pointer:fine){
+  .zoomabile > .lente{ opacity:0; pointer-events:none; }
+  .zoomabile:hover > .lente,
+  .zoomabile:focus-within > .lente{ opacity:1; pointer-events:auto; }
+}
+/* sul telefono il passaggio del mouse non esiste: sempre visibile, un po' piu' piccola */
+@media (hover:none){
+  .zoomabile > .lente{ opacity:1; width:36px; height:36px; top:8px; right:8px; }
+  .zoomabile > .lente svg{ width:19px; height:19px; }
+}
+@media print{ .zoomabile > .lente{ display:none !important; } }
+
+/* il velo: PIENO, cosi' sotto non si legge niente */
+#velofoto, #velografica{ background:#262420 !important; }
+#velofoto img{ border-radius:8px; }
+</style>
+
+<style>
+/* ===================================================================== */
+/*  IMPIANTO NUOVO - moduli con lo stile scritto nel tag   */
+/*  Stessi numeri (carattere 21, colonna 880), ma agganciati all'attributo */
+/*  perche' qui le classi non ci sono.                                    */
+/* ===================================================================== */
+section[data-screen-label] p[style*="font-size:19px"]{ font-size:var(--corpo) !important; }
+section[data-screen-label] li[style*="font-size:17px"]{ font-size:18px !important; }
+
+@media (min-width:901px){
+  /* il riquadro del testo dentro la card: padding 40 -> 118 (40 + 78) */
+  section[data-screen-label] > div[style*="padding:34px 40px"]{
+    padding-left:118px !important; padding-right:118px !important;
+  }
+  /* chi deve restare largo esce dal padding */
+  section[data-screen-label] > div > svg,
+  section[data-screen-label] > div > .binario,
+  section[data-screen-label] > div > .zoomabile:not(.filo),
+  section[data-screen-label] > div > .sfonda{
+    margin-left:calc(-1 * var(--sfora)) !important;
+    margin-right:calc(-1 * var(--sfora)) !important;
+  }
+}
+</style>
+
+<style>
+/* ============ RIFINITURE 25/07 ============ */
+/* la lentina nuova deve vincere anche sui moduli che hanno un <style> nel body */
+.zoomabile > .lente{
+  width:44px !important; height:44px !important; border-radius:50% !important;
+  top:10px !important; right:10px !important;
+  background:rgba(255,255,255,.94) !important; border:1px solid #D9DACF !important;
+}
+.zoomabile > .lente svg{ width:22px !important; height:22px !important; }
+@media (hover:hover) and (pointer:fine){
+  .zoomabile > .lente{ opacity:0 !important; pointer-events:none !important; }
+  .zoomabile:hover > .lente, .zoomabile:focus-within > .lente{
+    opacity:1 !important; pointer-events:auto !important; }
+}
+@media (hover:none){
+  .zoomabile > .lente{ opacity:1 !important; width:38px !important; height:38px !important;
+    top:8px !important; right:8px !important; }
+  .zoomabile > .lente svg{ width:20px !important; height:20px !important; }
+}
+/* il guscio che avvolge la singola foto, quando il contenitore non si presta */
+.zoom-foto{ position:relative; display:block; line-height:0; }
+/* i moduli senza classi: l'etichetta sta su section E su div */
+[data-screen-label] p[style*="font-size:19px"]{ font-size:var(--corpo) !important; }
+[data-screen-label] li[style*="font-size:17px"]{ font-size:18px !important; }
+@media (min-width:901px){
+  [data-screen-label] > div[style*="padding:34px 40px"]{
+    padding-left:118px !important; padding-right:118px !important; }
+  [data-screen-label] > div > svg,
+  [data-screen-label] > div > .binario,
+  [data-screen-label] > div > .zoomabile:not(.filo),
+  [data-screen-label] > div > .sfonda{
+    margin-left:calc(-1 * var(--sfora)) !important;
+    margin-right:calc(-1 * var(--sfora)) !important; }
+}
+</style>
+
+<style>
+/* ============ SELETTORI CON E SENZA SPAZIO ============ */
+/* il browser normalizza lo style scritto nel tag: "font-size: 19px" con lo spazio.
+   Quindi ogni selettore va scritto in entrambe le forme. */
+[data-screen-label] p[style*="font-size:19px"],
+[data-screen-label] p[style*="font-size: 19px"]{ font-size:var(--corpo) !important; }
+[data-screen-label] li[style*="font-size:17px"],
+[data-screen-label] li[style*="font-size: 17px"]{ font-size:18px !important; }
+
+@media (min-width:901px){
+  [data-screen-label] > div[style*="padding:34px 40px"],
+  [data-screen-label] > div[style*="padding: 34px 40px"]{
+    padding-left:118px !important; padding-right:118px !important;   /* 40 + 78 */
+  }
+  /* chi deve restare largo esce dal padding nuovo */
+  [data-screen-label] > div > svg,
+  [data-screen-label] > div > .binario,
+  [data-screen-label] > div > .zoomabile:not(.filo),
+  [data-screen-label] > div > .sfonda{
+    margin-left:calc(-1 * var(--sfora)) !important;
+    margin-right:calc(-1 * var(--sfora)) !important;
+  }
+  /* la fascia dell'illustrazione in cima alla card intro resta com'e' */
+  [data-screen-label] > div[style*="padding:16px 16px 0"],
+  [data-screen-label] > div[style*="padding: 16px 16px 0"]{
+    padding-left:16px !important; padding-right:16px !important;
+  }
 }
 </style>
 </head>
@@ -2788,9 +2942,11 @@ var rough=function(){"use strict";function t(t,e,s){if(t&&t.length){const[n,o]=e
    Ogni mappa/grafico/infografica larga prende un pulsante «+»: al clic si apre
    a schermo intero dentro un telaio chiaro; si chiude con la x, col velo o con Esc. */
 (function () {
-  var PIU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" '
-          + 'stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.6"/>'
-          + '<path d="M15.4 15.4 L21 21 M10.5 7.6 v5.8 M7.6 10.5 h5.8"/></svg>';
+  var PIU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+          + 'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+          + '<circle cx="10" cy="10" r="6.4"/>'
+          + '<path d="M14.9 14.9 L20.6 20.6"/>'
+          + '<path d="M10 6.9 v6.2 M6.9 10 h6.2"/></svg>';
   var velo = document.createElement("div");
   velo.id = "velografica";
   var bChiudi = document.createElement("button");
@@ -2882,6 +3038,55 @@ var rough=function(){"use strict";function t(t,e,s){if(t&&t.length){const[n,o]=e
   document.addEventListener("keydown", function(ev){
     if (ev.key === "Escape" && velo.classList.contains("on")) chiudi();
   });
+})();
+</script>
+
+<script>
+/* ============ IMPIANTO NUOVO 25/07/2026 - LA LENTINA SULLE FOTO ============
+   Regola di Mauro: il «+» va SOLO sulle foto che hanno definizione per essere
+   ingrandite (lato lungo >= 1400px). Le altre portano data-lente="no" e restano
+   senza pulsante e senza clic. Le mappe e le grafiche ce l'hanno sempre. */
+(function () {
+  var PIU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+          + 'stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.4"/>'
+          + '<path d="M14.9 14.9 L20.6 20.6"/><path d="M10 6.9 v6.2 M6.9 10 h6.2"/></svg>';
+  var foto = [].slice.call(document.querySelectorAll('img')).filter(function (im) {
+    var s = im.getAttribute('src') || '';
+    if (s.indexOf('logo-arte-bianca') >= 0) return false;
+    return !im.closest('#velofoto') && !im.closest('#velografica') && !im.closest('.video-anteprima');
+  });
+  for (var i = 0; i < foto.length; i++) {
+    (function (img) {
+      if (img.getAttribute('data-lente') === 'no') { img.style.cursor = 'default'; return; }
+      var host = img.closest('.mos') || img.closest('.fotoblocco') || img.closest('.fotonuda');
+      if (!host) {
+        /* nessuna classe: avvolgo direttamente l'immagine, cosi' la lentina si
+           appoggia esattamente sopra di lei senza toccare i contenitori */
+        if (!img.parentNode) return;
+        host = document.createElement('span');
+        host.className = 'zoom-foto';
+        img.parentNode.insertBefore(host, img);
+        host.appendChild(img);
+      }
+      if (!host || !host.parentNode) return;
+      if (host.parentNode.classList && host.parentNode.classList.contains('zoomabile')) return;
+      var guscio = document.createElement('div');
+      guscio.className = 'zoomabile';
+      ['filo', 'sfonda', 'fotomedia', 'fotogrande'].forEach(function (c) {
+        if (host.classList.contains(c)) guscio.classList.add(c);
+      });
+      host.parentNode.insertBefore(guscio, host);
+      guscio.appendChild(host);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'lente';
+      b.setAttribute('data-noprint', '1');
+      b.setAttribute('aria-label', 'Ingrandisci la foto');
+      b.setAttribute('title', 'Ingrandisci');
+      b.innerHTML = PIU;
+      b.addEventListener('click', function (ev) { ev.stopPropagation(); img.click(); });
+      guscio.appendChild(b);
+    })(foto[i]);
+  }
 })();
 </script>
 </body>
