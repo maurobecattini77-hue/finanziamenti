@@ -209,13 +209,16 @@ svg.mappa{max-width:1020px;margin-left:auto;margin-right:auto;}
 /* Griglie a 3-4 colonne (e 2 asimmetriche) impilate sul telefono */
 @media (max-width: 720px){
   #p-lez [style*="repeat(3,1fr)"], #p-app [style*="repeat(3,1fr)"],
-  #p-lez [style*="repeat(4,1fr)"], #p-app [style*="repeat(4,1fr)"]{ grid-template-columns:1fr 1fr !important; }
+  #p-lez [style*="repeat(4,1fr)"], #p-app [style*="repeat(4,1fr)"],
+  #p-sintesi [style*="repeat(4,1fr)"]{ grid-template-columns:1fr 1fr !important; }
   #p-lez [style*="1.1fr 1fr"], #p-lez [style*=".9fr 1.4fr"],
-  #p-app [style*=".85fr 1.15fr"], #p-app [style*="1fr 1fr"]{ grid-template-columns:1fr !important; }
+  #p-app [style*=".85fr 1.15fr"], #p-app [style*="1fr 1fr"],
+  #p-sintesi [style*="grid-template-columns:1fr 1fr"]{ grid-template-columns:1fr !important; }
 }
 @media (max-width: 520px){
   #p-lez [style*="repeat(3,1fr)"], #p-app [style*="repeat(3,1fr)"],
-  #p-lez [style*="repeat(4,1fr)"], #p-app [style*="repeat(4,1fr)"]{ grid-template-columns:1fr !important; }
+  #p-lez [style*="repeat(4,1fr)"], #p-app [style*="repeat(4,1fr)"],
+  #p-sintesi [style*="repeat(4,1fr)"]{ grid-template-columns:1fr !important; }
 }
 </style>
 
