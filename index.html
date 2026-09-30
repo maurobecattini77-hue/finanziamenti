@@ -151,6 +151,9 @@ svg text.num, svg tspan.num{font-family:'Fraunces',Georgia,serif !important;font
 #velofoto .chiudi{position:absolute;top:16px;right:20px;width:48px;height:48px;border-radius:50%;border:none;background:rgba(248,248,243,.16);color:#F8F8F3;font-size:30px;line-height:1;cursor:pointer;font-family:'Schibsted Grotesk',sans-serif;}
 #velofoto .chiudi:hover{background:rgba(248,248,243,.30);}
 @media print{#velofoto{display:none !important;}}
+.avvolge::after{content:"";display:block;clear:both;}
+.avvolge .scatto{float:right;width:340px;margin:6px 0 20px 30px;}
+@media (max-width:700px){.avvolge .scatto{float:none;width:100%;max-width:360px;margin:0 auto 20px;}}
 @media (max-width:860px){.fotoriga{grid-template-columns:1fr !important;}.fotoriga>.fotoblocco,.fotoriga>.fotonuda{max-width:380px;margin:0 auto;}}
 </style>
 
@@ -996,8 +999,11 @@ section[data-screen-label] li[style*="font-size:17px"]{ font-size:18px !importan
           <text x="510" y="336" text-anchor="middle" font-family="Schibsted Grotesk, sans-serif" font-size="11" font-weight="700" letter-spacing="1.4" fill="#7a611f">IL GUADAGNO DELLA BANCA</text>
           <text x="510" y="360" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="17" fill="#262420">la differenza fra i due tassi: lo spread</text>
         </svg>
-        <p class="t" style="margin-top:22px;">A noi, la banca dà <strong class="hl">quasi niente</strong>. Sul conto corrente di una banca tradizionale gli interessi sono quasi zero: in media lo 0,19% all'anno (luglio 2026), cioè meno di 2 euro su 1.000, e molte banche danno zero. Di più si ottiene con un <strong>conto deposito vincolato</strong>, dove prometti di lasciare fermi i soldi per un certo tempo: sui nuovi vincolati, in media circa il 2,5% all'anno. Alle imprese che prendono soldi in prestito, invece, la banca chiede in media il 3,79% (dati Banca d'Italia).</p>
-        <p class="t">La banca, poi, non vive solo di prestiti: offre anche altri <strong class="hl">servizi</strong>. Ti fa pagare le bollette in automatico dal conto (la domiciliazione), fa bonifici e dà le carte di pagamento, ti consiglia su come investire i risparmi (la consulenza finanziaria), custodisce oggetti di valore nelle cassette di sicurezza. Per molti di questi servizi si fa pagare una <strong>commissione</strong>, cioè un compenso. Li vedrai meglio nella card 15.</p>
+        <div class="avvolge" style="margin-top:22px;">
+          <div class="scatto"><div class="fotoblocco"><img src="assets/c10-consulenza-in-banca.jpg" alt="Due giovani panettieri seduti alla scrivania di una consulente, in una filiale di banca luminosa" loading="lazy" decoding="async"></div></div>
+          <p class="t">A noi, la banca dà <strong class="hl">quasi niente</strong>. Sul conto corrente di una banca tradizionale gli interessi sono quasi zero: in media lo 0,19% all'anno (luglio 2026), cioè meno di 2 euro su 1.000, e molte banche danno zero. Di più si ottiene con un <strong>conto deposito vincolato</strong>, dove prometti di lasciare fermi i soldi per un certo tempo: sui nuovi vincolati, in media circa il 2,5% all'anno. Alle imprese che prendono soldi in prestito, invece, la banca chiede in media il 3,79% (dati Banca d'Italia).</p>
+          <p class="t">La banca, poi, non vive solo di prestiti: offre anche altri <strong class="hl">servizi</strong>. Ti fa pagare le bollette in automatico dal conto (la domiciliazione), fa bonifici e dà le carte di pagamento, ti consiglia su come investire i risparmi (la consulenza finanziaria), custodisce oggetti di valore nelle cassette di sicurezza. Per molti di questi servizi si fa pagare una <strong>commissione</strong>, cioè un compenso. Li vedrai meglio nella card 15.</p>
+        </div>
         <div class="shelfc" style="--tn:#eef5f0;--cp:#5C8B73;--et:#3f6b52;">
           <div class="shelfeti">Da ricordare</div>
           <p>Il denaro che la banca ti presta <strong>non è suo</strong>: è il risparmio di altre persone. Per questo la legge le impone di essere prudente e di valutare bene chi ha davanti. Quando ti chiede documenti e bilanci non è per farti perdere tempo: sta proteggendo i soldi dei risparmiatori.</p>
